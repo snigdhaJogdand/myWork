@@ -1,0 +1,42 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<!-- <a routerLink='/home' >   
+        <input type="button" name="return" value="BACK TO HOME PAGE">
+        </a> -->
+<hr>
+<h1 align="center">MANAGE PROFILE </h1>
+<hr>
+<br>
+<form [formGroup]="rform" (ngSubmit)=onSubmit(rform.value)>
+  <table align="center">
+    <tr>
+      <td>EMAIL ID :</td>
+      <td>
+        <input type="text" name="email" formControlName="email" [(ngModel)]="getdata.email" disabled>
+      </td>
+    </tr>
+    <tr>
+      <td>PHONE NUMBER :</td>
+      <td>
+        <input type="text" name="phone" formControlName="phone" [(ngModel)]="getdata.phone">
+      </td>
+    </tr>
+    <tr>
+      <td>USERNAME :</td>
+      <td>
+        <input type="text" name="username" formControlName="username" [(ngModel)]="getdata.username">
+      </td>
+    </tr>
+    <tr>
+      <td>PASSWORD :</td>
+      <td>
+        <input type="password" name="password" formControlName="password" [(ngModel)]="getdata.password">
+      </td>
+    </tr><br>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" name="submit" value="submit" [disabled]="!rform.valid">
+      </td>
+    </tr>
+  </table>
+</form>

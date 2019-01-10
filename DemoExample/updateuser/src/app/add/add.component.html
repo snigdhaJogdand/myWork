@@ -1,0 +1,29 @@
+<a routerLink='/'>  <<<< BACK  </a>
+
+<h3> ADD PRODUCT </h3>
+
+
+<form id="formNewproduct"
+      name="formNewproduct"
+      #productData="ngForm"
+      (ngSubmit)="addNewProduct(productData.value)">
+
+  <label>name ::</label>
+  <input type="text" 
+        name="name"
+        id="name"
+        placeholder="name"
+        ngModel >
+
+  <label>Username ::</label>
+  <input type="text" 
+        name="username"
+        id="username"
+        placeholder="username"
+        ngModel >
+
+        <input type="submit" value="Add Product">
+</form>
+
+<br>
+<h2 *ngIf="isAdded">{{ confirmationString }}</h2>

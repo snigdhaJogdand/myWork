@@ -1,0 +1,80 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">VIEW ATTENDANCE LIST</h1>
+<hr>
+<div align="center">
+  Search Student's Name:
+  <input type="textbox" name="search" [(ngModel)]="search">
+</div>
+<br>
+<div style="height:300px; width:35%;margin-left:10px; background-color:rgb(241, 221, 156); float:left">
+  <br>
+  <div align="center">
+    Choose Date:
+    <input type="date" name="date" value="date" (ngModelChange)="filterDate($event);" [(ngModel)]="date">
+  </div>
+  <br>
+  <div *ngIf="flag" style="padding-left:20px;">
+    Class:
+    <br>
+    <div *ngFor="let item of classList" style="float:left; padding-left: 7px; ">
+      <input type="checkbox" [value]="item.id" (ngModelChange)="FilterData($event,item);" [(ngModel)]="item.selected">
+      {{ item.name }}
+    </div>
+    <br>
+    Division:
+    <br>
+    <div *ngFor="let item of divisionList" style="float:left; padding-left: 15px;">
+      <input type="checkbox" [value]="item.id" (ngModelChange)="FilterData($event,item);" [(ngModel)]="item.selected">
+      {{ item.name }}
+    </div>
+    <br>
+    Status:
+    <br>
+    <div *ngFor="let item of statusList" style="float:left; padding-left: 15px;">
+      <input type="checkbox" [value]="item.id" (ngModelChange)="FilterData($event,item);" [(ngModel)]="item.selected">
+      {{ item.name }}
+    </div>
+
+  </div>
+</div>
+<div style="height:auto; width:60%; margin-left:30px; background-color:rgb(192, 229, 215);float:left; ">
+  <div *ngIf="data.length>0">
+    <br>
+    <table align="center" border="1px" style="border-style: initial">
+      <thead>
+        <tr style="font-weight:bold;">
+          <td class="pointer" (click)="sort('rollNo')"> ROLL No. </td>
+          <td class="pointer" (click)="sort('name')"> NAME </td>
+          <td class="pointer" (click)="sort('class')"> CLASS </td>
+          <td class="pointer" (click)="sort('standard')"> STANDARD </td>
+          <td> STATUS </td>
+          <td> DATE </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let details of data | filter:search | orderrByPipe: {property: column, direction: direction} | paginate: { itemsPerPage: 5, currentPage: p }">
+          <td>{{ details.rollNo }}</td>
+          <td>{{ details.name | uppercase }}</td>
+          <td>{{ details.class }} </td>
+          <td>{{ details.standard }}</td>
+          <td>{{ details.status }}</td>
+          <td>{{ details.date | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <div style="background-color: rgb(240, 235, 231); margin-top: 30px;">
+      <pagination-controls align="center" (pageChange)="p= $event" autoHide="true" previousLabel="Previous Page"
+        nextLabel="Next Page">
+      </pagination-controls>
+    </div>
+  </div>
+  <div *ngIf="data.length==0">
+    <br>
+    <h1 align="center"> No records Found !!</h1>
+  </div>
+  <br>
+</div>

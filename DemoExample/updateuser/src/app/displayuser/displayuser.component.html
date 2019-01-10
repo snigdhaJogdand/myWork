@@ -1,0 +1,22 @@
+<form [formGroup]="forms"  (ngSubmit) = "onSubmit(forms.value)" >
+    <table>
+      <tr>
+       <td>
+          <input type="text" formControlName="user" name="user" [(ngModel)]="abc.name" >  
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <input type="text" formControlName="username" name="username" [(ngModel)]="abc.username">  
+          
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td colspan=2 align="center">
+            <button type="submit" name="submit" value="submit">DISPLAY DATA </button>
+        </td>
+      </tr>
+    </table>
+    </form>
+    

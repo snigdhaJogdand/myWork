@@ -1,0 +1,42 @@
+
+    <a routerLink='' >   
+        <input type="button" name="return" value="BACK TO HOME PAGE">
+        </a>
+<h1 align="center">LOGIN HERE !! </h1>
+    <form [formGroup]="lform" (ngSubmit)=onSubmit(lform.value)>
+      <table align="center">
+        <tr>
+          <td>EMAIL ID :</td>
+          <td>
+            <input type="text" name="email" formControlName="email" placeholder="Email Id" >
+            </td>
+          
+        </tr>
+        <tr>
+          <td>PASSWORD :</td>
+          <td>
+            <input type="password" name="password" formControlName="password" placeholder="Password" >
+         </td>
+         
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" name="submit" [disabled]="!lform.valid" value="submit">  
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <p >{{c}}</p>
+          </td>
+        </tr>
+          
+      </table> 
+          
+     <p style="color:red;font-weight:bold;" align="center" *ngIf="lform.controls['email'].touched 
+       && lform.controls['email'].hasError('minlength')">
+       PLEASE ENTER EMAIL OF MORE THAN 3 CHARACTERS
+       </p>
+       
+    </form>
+  
+ 

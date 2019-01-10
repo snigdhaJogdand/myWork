@@ -1,0 +1,35 @@
+
+
+<h1 align="center">LOGIN PAGE </h1>
+<form [formGroup]="lform" (ngSubmit)=Submit(lform.value)>
+  <table align="center">
+    <tr>
+      <td>EMAIL ID :</td>
+      <td>
+        <input type="text" name="email" formControlName="email" placeholder="Email Id" >
+        </td>
+      
+    </tr>
+    <tr>
+      <td>PASSWORD :</td>
+      <td>
+        <input type="password" name="password" formControlName="password" placeholder="Password" >
+     </td>
+     
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" name="submit" [disabled]="!lform.valid" value="submit">  
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <p >{{failuremessage}}</p>
+      </td>
+    </tr>
+   </table> 
+      
+
+   
+</form>
+

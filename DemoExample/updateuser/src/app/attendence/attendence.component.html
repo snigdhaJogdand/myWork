@@ -1,0 +1,118 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">VIEW ATTENDANCE LIST</h1>
+<hr>
+<div style="height:300px; width:35%;margin-left:10px; background-color:rgb(241, 221, 156); float:left">
+  <br>
+  <!-- Choose Date: 
+  <input type="date" name="date" value="date" [(ngModel)]="date">{{date}}
+  <table>
+    <tr>
+      <td>
+        Class:
+      </td>
+      <td *ngFor="let item of classList">
+        <input type="checkbox" [value]="item.id" (ngModelChange)="FilterData(item, $event);" [(ngModel)]="item.selected">
+        {{ item.name }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Division:
+      </td>
+      <td *ngFor="let item of divisionList">
+        <input type="checkbox" [value]="item.id" (ngModelChange)="FilterData(item, $event);" [(ngModel)]="item.selected">
+        {{ item.name }}
+      </td>
+    </tr>
+  </table> -->
+  <br>
+  <div align="center">
+    <form [formGroup]="aform" (ngSubmit)=onSubmit(aform.value)>
+      <tr>
+        <td> Select date: </td>
+        <td>
+          <input type="date" name="date" placeholder="Choose Date" formControlName="date">
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td> Select class: </td>
+        <td>
+          <select name="class" formControlName="class">
+            <option value="1">1st class</option>
+            <option value="2">2nd class</option>
+            <option value="3">3rd class</option>
+            <option value="4">4th class</option>
+            <option value="5">5th class</option>
+            <option value="6">6th class</option>
+            <option value="7">7th class</option>
+            <option value="8">8th class</option>
+            <option value="9">9th class</option>
+            <option value="10">10th class</option>
+            <option value="11">11th class</option>
+            <option value="12">12th class</option>
+          </select>
+        </td>
+      </tr>
+      <tr colspan="2">
+        <td style="padding: 10px 0 10px 104px;">
+          <input type="submit" value="submit">
+        </td>
+      </tr>
+    </form>
+  </div>
+</div>
+<div style="height:300px; width:60%; margin-left:30px; background-color:rgb(192, 229, 215);float:left; ">
+  <br>
+<!-- <table align="center" border="1px" style="border-style: initial">
+    <thead>
+      <tr style="font-weight:bold;">
+        <td> ROLL No. </td>
+        <td> NAME </td>
+        <td> CLASS </td>
+        <td> STANDARD </td>
+        <td> STATUS </td>
+        <td> DATE </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let details of data ">
+        <td>{{ details.id }}</td>
+        <td>{{ details.name | uppercase }}</td>
+        <td>{{ details.class }} </td>
+        <td>{{ details.standard }}</td>
+        <td>{{ details.status }} </td>
+        <td>{{ details.date | date: 'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+  
+  <br>
+  <div *ngIf="list.length>0">
+    <table align="center" border="1px">
+      <thead>
+        <tr style="font-weight:bold;">
+          <td> ROLL NO </td>
+          <td> NAME </td>
+          <td> CLASS </td>
+          <td> DIVISION </td>
+          <td> STATUS</td>
+          <td> DATE </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of list">
+          <td>{{ device.rollNo }}</td>
+          <td>{{ device.name }}</td>
+          <td>{{ device.class }}</td>
+          <td>{{ device.standard }}</td>
+          <td>{{ device.status }}</td>
+          <td>{{ device.date | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>

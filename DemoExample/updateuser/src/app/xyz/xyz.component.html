@@ -1,0 +1,16 @@
+<br>
+<div align="center" class="col-md-12">
+  <table border=1 class="table table-responsive table-hover">
+    <tr>
+      <th class="pointer" (click)="sort('CategoryID')"> // category Id
+      <th class="pointer" (click)="sort('CategoryName')"> // Category Name
+      <th class="pointer" (click)="sort('Description')"> // Description
+
+    </tr>
+    <tr *ngFor="let item of records | orderrByPipe: {property: column, direction: direction}">
+      <td>{{item.CategoryID}}</td>
+      <td>{{item.CategoryName}}</td>
+      <td>{{item.Description}}</td>
+    </tr>
+  </table>
+</div>

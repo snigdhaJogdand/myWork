@@ -1,0 +1,31 @@
+<hr>
+<h1 align="center" >NSO DEVICES LIST</h1>
+<hr>
+<table border="6px" align="center">
+  <thead>
+  <tr style="font-weight:bold;" >
+    <td> NAME  </td>
+    <td> ADDRESS </td>
+    <td> PORT </td>
+    <td> DESCRIPTION </td>
+    <td> AUTHGROUP </td>
+    <td> state/oper-state </td>
+    <td> state/admin-state </td>
+    <td> platform/name </td>
+   <td>  platform/version </td>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let device of deviceList">
+    <td>{{ device[0] }}</td>
+    <td>{{ device[1] }}</td>
+    <td>{{ device[2] }}</td>
+    <td>{{ device[3] }}</td>
+    <td>{{ device[4] }}</td>
+    <td>{{ device[5] }}</td>
+    <td>{{ device[6] }}</td>
+    <td>{{ device[7] }}</td>
+    <td>{{ device[8] }}</td>
+  </tr>
+</tbody>
+</table>

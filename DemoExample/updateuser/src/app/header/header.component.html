@@ -1,0 +1,41 @@
+
+<body>
+  <div class="nav">
+    <ul id="first">
+      <li><a routerLink='/home'>{{userEmail}}</a>
+        <ul>
+          <li><a routerLink='/update'>Manage Profile </a></li>
+          <li><a routerLink='/changePassword'>Change Password</a></li>
+          <li><a routerLink='' (click)=logout()>Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+
+<!-- <div style="border-radius:30px 30px 30spx 30px;
+            background:rgba(12, 153, 12, 0.932);
+            width: 100%;
+            height:50px;
+          ">
+  <div style="border-radius:30px 15px 15px 30px;
+  padding-top:10px;
+              width: 30%;
+              height: 50%;
+              margin-left:68%;
+              ">
+    <form style="background-color: rgb(238, 139, 139);
+                 ">
+      Profile Icon
+      <select style="background-color: rgb(247, 192, 121); 
+                    font-size: 100%;
+                    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <option value="settings">{{userEmail}}</option>
+        <option value="changePassword"> Change Password </option>
+        <option value="manageUser">Update User </option>
+        <option value="logout"> Logout {{userEmail}} </option>
+      </select>
+    </form>
+  </div>
+</div> -->

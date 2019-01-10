@@ -1,0 +1,102 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">TAKE STUDENT ATTENDANCE</h1>
+<hr>
+<form [formGroup]="eform" (ngSubmit)=onSubmit(eform.value)>
+  <table align="center">
+    <tr>
+      Choose Class:
+      <td>
+        <select name="class" formControlName="class">
+          <option value="1">1st class</option>
+          <option value="2">2nd class</option>
+          <option value="3">3rd class</option>
+          <option value="4">4th class</option>
+          <option value="5">5th class</option>
+          <option value="6">6th class</option>
+          <option value="7">7th class</option>
+          <option value="8">8th class</option>
+          <option value="9">9th class</option>
+          <option value="10">10th class</option>
+          <option value="11">11th class</option>
+          <option value="12">12th class</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      Choose Standard:
+      <td>
+        <select name="standard" formControlName="standard">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+      </td>
+    </tr>
+    <tr colspan="2" align="center">
+      <td>
+        <input type="submit" value="submit" name="submit" [disabled]="!eform.valid">
+      </td>
+    </tr>
+  </table>
+  <br>
+</form>
+<form (ngSubmit)="onSubmitButton()" #sumbitForm="ngForm">
+  <table border="1px" style="border-style: initial" align="center">
+    <div *ngIf="list.length>0" align="center">
+      Choose date:
+      <input name="date" type="date" [(ngModel)]="date" required>
+      <br>
+      <div *ngIf="date">
+        <div *ngIf="errorMessage">
+          <h1> {{ errorM }}'s attendance is already taken</h1>
+        </div>
+        <thead>
+          <br>
+          <tr style="font-weight:bold;">
+            <th>ROLL No.</th>
+            <td> NAME </td>
+            <td> FATHER'S NAME </td>
+            <td> MOTHER'S NAME </td>
+            <td> PHONE NUMBER </td>
+            <td> AGE </td>
+            <td> GENDER </td>
+            <td> ADDRESS </td>
+            <td> CLASS </td>
+            <td> STANDARD </td>
+            <td> EMAIL </td>
+            <td colspan="2" align="center"> STATUS </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let details of list">
+            <td>{{ details.id }}</td>
+            <td>{{ details.name }}</td>
+            <td>{{ details.fatherName }}</td>
+            <td>{{ details.motherName }}</td>
+            <td>{{ details.phone }}</td>
+            <td>{{ details.age }}</td>
+            <td>{{ details.gender }}</td>
+            <td>{{ details.address }}</td>
+            <td>{{ details.class }}</td>
+            <td>{{ details.standard }}</td>
+            <td>{{ details.email }}</td>
+            <td *ngFor="let status of statusList">
+              {{status.name}}
+              <input type="radio" name="status" [value]="status.id" (ngModelChange)="selectStatus(details, $event);"
+                [(ngModel)]="status.required" required>
+            </td>
+          </tr>
+          <tr>
+            <br>
+            <input type="submit" value="submit" name="submit" [disabled]="!sumbitForm.valid">
+          </tr>
+        </tbody>
+        <p align="center">{{this.finalArray| json}}</p>
+      </div>
+    </div>
+  </table>
+</form>
+<br>

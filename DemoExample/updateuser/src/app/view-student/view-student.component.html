@@ -1,0 +1,60 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">View Student Details</h1>
+<hr>
+<br>
+<form [formGroup]="viewStudentForm" (ngSubmit)=onSubmit(viewStudentForm.value)>
+  <table align="center">
+    <tr>
+      Class:
+      <td *ngFor="let className of className.controls; let i=index">
+        <input type="checkbox" [formControl]="className" />{{studentStatus.className[i].name}}
+      </td>
+    </tr>
+    <tr>
+      Division:
+      <td *ngFor="let standard of standard.controls; let i=index">
+        <input type="checkbox" [formControl]="standard" />{{studentStatus.standard[i].name}}
+      </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr colspan="2" align="center">
+      <td>
+        <input type="submit" name="submit" value="Get Student Details"> 
+      </td>
+    </tr>
+  </table>
+</form>
+<br>
+<table align="center" border="1px" style="border-style: initial">
+  <thead>
+    <tr style="font-weight:bold;">
+      <td> NAME </td>
+      <td> FATHER'S NAME </td>
+      <td> MOTHER'S NAME </td>
+      <td> PHONE NUMBER </td>
+      <td> AGE </td>
+      <td> GENDER </td>
+      <td> ADDRESS </td>
+      <td> CLASS </td>
+      <td> STANDARD </td>
+      <td> EMAIL </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let details of list">
+      <td>{{ details.name }}</td>
+      <td>{{ details.fatherName }}</td>
+      <td>{{ details.motherName }}</td>
+      <td>{{ details.phone }}</td>
+      <td>{{ details.age }}</td>
+      <td>{{ details.gender }}</td>
+      <td>{{ details.address }}</td>
+      <td>{{ details.class }}</td>
+      <td>{{ details.standard }}</td>
+      <td>{{ details.email }}</td>
+    </tr>
+  </tbody>
+</table>

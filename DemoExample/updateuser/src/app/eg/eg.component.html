@@ -1,0 +1,41 @@
+
+
+<a routerLink='/add'> ADD PRODUCT   </a>
+
+
+<h3>PRODUCTS.... </h3>
+<table>
+ 
+    <th>
+      Name
+    </th>
+    <th>
+      UserName
+    </th>
+    <th>
+    </th>
+  <tbody  *ngFor="let prod of products">
+  <tr *ngIf="prod.id==2">
+   
+  <td>
+      <input type="text" value="{{prod.name}}">
+  </td>
+  <td>
+    <input type="text" [value]="prod.username">
+  </td>
+ <td [routerLink]="['/update',prod.id]">
+   <a> 
+     UPDATE
+   </a>
+ </td>
+  </tr>
+ </tbody>
+  <tr>
+    <td>
+
+
+    </td>
+  </tr>
+</table>
+
+

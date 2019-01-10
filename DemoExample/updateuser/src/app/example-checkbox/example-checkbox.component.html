@@ -1,0 +1,63 @@
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">View Student Details</h1>
+<hr>
+<br>
+<table>
+  <tr>
+    Class:
+    <td *ngFor="let item of classList">
+      <input type="checkbox" [value]="item.id" (ngModelChange)="FilterClass(item, $event);" [(ngModel)]="item.selected">
+      {{ item.name }}
+    </td>
+  </tr>
+  <tr>
+    Division:
+    <td *ngFor="let item of divisionList">
+      <input type="checkbox" [value]="item.id" (ngModelChange)="FilterDivision(item, $event);" [(ngModel)]="item.selected">
+      {{ item.name }}
+    </td>
+  </tr>
+</table>
+<br>
+<div align="center">
+  Search Student's Name:
+  <input type="textbox" name="search" [(ngModel)]="search">
+</div>
+<br>
+<table align="center" border="1px" style="border-style: initial">
+  <thead>
+    <tr style="font-weight:bold;">
+      <td> NAME </td>
+      <td> FATHER'S NAME </td>
+      <td> MOTHER'S NAME </td>
+      <td> PHONE NUMBER </td>
+      <td> AGE </td>
+      <td> GENDER </td>
+      <td> ADDRESS </td>
+      <td> CLASS </td>
+      <td> STANDARD </td>
+      <td> EMAIL </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let details of data | filter:search | columnFilter | paginate: { itemsPerPage: 7, currentPage: p } ">
+      <td>{{ details.name | uppercase }}</td>
+      <td>{{ details.fatherName | lowercase}}</td>
+      <td>{{ details.motherName | lowercase}}</td>
+      <td>{{ details.phone }}</td>
+      <td>{{ details.age }}</td>
+      <td>{{ details.gender | uppercase }}</td>
+      <td>{{ details.address | lowercase }}</td>
+      <td>{{ details.class }} </td>
+      <td>{{ details.standard }}</td>
+      <td>{{ details.email |lowercase }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div style="background-color: rgb(240, 235, 231)">
+  <pagination-controls align="center" (pageChange)="p= $event" autoHide="true" previousLabel="Previous Page" nextLabel="Next Page">
+  </pagination-controls>
+</div>

@@ -1,0 +1,61 @@
+<a routerLink=''>
+  <input type="button" name="return" value="BACK TO HOME PAGE">
+</a>
+
+
+<h1 align="center">User Registration </h1>
+<form [formGroup]="regform" (ngSubmit)=onSubmit(regform.value)>
+  <table align="center">
+    <tr>
+      <td>EMAIL ID :</td>
+      <td>
+        <input type="text" name="email" formControlName="email" placeholder="EMAIL ID" [ngStyle]="{'border-bottom-color':check(regform.controls.email) }">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <div *ngIf="regform.controls.email.invalid">Please enter a valid Email Address</div>
+      </td>
+    </tr>
+    <tr>
+      <td>PHONE NUMBER :</td>
+      <td>
+        <input type=" text" name="phone" formControlName="phone" placeholder="PHONE NUMBER" [ngStyle]="{'border-bottom-color':check(regform.controls.phone) }">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <div *ngIf="regform.controls.phone.invalid">Phone number must start with 7, 8 or 9</div>
+      </td>
+    </tr>
+    <tr>
+      <td>USERNAME :</td>
+      <td>
+        <input type="text" name="username" formControlName="username" placeholder="USERNAME" [ngStyle]="{'border-bottom-color':check(regform.controls.username) }">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <div *ngIf="regform.controls.username.invalid">Username must only contains characters and length between 5 -15</div>
+      </td>
+    </tr>
+    <tr>
+      <td>PASSWORD :</td>
+      <td>
+        <input type="password" name="password" formControlName="password" placeholder="PASSWORD" [ngStyle]="{'border-bottom-color':check(regform.controls.password)}">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <div *ngIf="regform.controls.password.invalid">Password must contain 1 Uppercase and Lowercase letter, 1
+          Number, 1 Special character(#?!@$%^&*-) and of
+          length 5 to 20</div>
+      </td>
+    </tr><br>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="submit" name="submit" [disabled]="!regform.valid" value="submit">
+      </td>
+    </tr>
+  </table>
+</form>

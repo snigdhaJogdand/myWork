@@ -1,0 +1,19 @@
+
+<app-header></app-header>
+<app-navigation-header></app-navigation-header>
+<hr>
+<h1 align="center">Show Student's Details</h1>
+<hr>
+<br>
+<div align="center">
+    <form (ngSubmit)="myFunction(rollNumber)">
+        Enter Roll Number: <input type="text" name="rollNo" [(ngModel)]="rollNumber">
+        <input type="submit">
+    </form>
+    <br>
+</div>
+<br>
+<div *ngIf="calendarOptions">
+    <ng-fullcalendar #ucCalender [(options)]="calendarOptions" [(eventsModel)]="tittle">
+    </ng-fullcalendar>
+</div>
